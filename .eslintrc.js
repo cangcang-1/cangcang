@@ -16,6 +16,7 @@ module.exports = {
       {
         ignores: []
       }
-    ]
+    ],
+    'vue/no-mutating-props': 0
   }
 }

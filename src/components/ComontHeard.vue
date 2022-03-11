@@ -2,7 +2,9 @@
   <div class="heard-container">
     <div class="l-container">
       <el-button plain icon="el-icon-menu" size="mini" @click="handleMenu"></el-button>
-      <h4 style="color: #fff">首页</h4>
+      <el-breadcrumb separator="/">
+        <el-breadcrumb-item color="black" v-for="item in tags" :key="item.path" :to="{ path: item.path }">{{ item.label }}</el-breadcrumb-item>
+      </el-breadcrumb>
     </div>
     <div class="r-container">
       <el-dropdown>
@@ -17,6 +19,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   data() {
     return {
@@ -27,6 +30,11 @@ export default {
     handleMenu() {
       this.$store.commit('collapseMenu')
     }
+  },
+  computed: {
+    ...mapState({
+      tags: state => state.tab.tabsList
+    })
   }
 }
 </script>
@@ -59,5 +67,8 @@ export default {
     width: 35px;
     border-radius: 50%;
   }
+}
+.el-breadcrumb /deep/ .el-breadcrumb__inner {
+  color: rgb(192, 192, 192);
 }
 </style>

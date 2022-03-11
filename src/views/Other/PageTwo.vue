@@ -1,10 +1,10 @@
 <template>
-  <div>Mall组件</div>
+  <div>PageTwo组件</div>
 </template>
 
 <script>
 export default {
-  name: 'Mall'
+  name: 'PageTwo'
 }
 </script>
 

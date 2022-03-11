@@ -8,6 +8,7 @@
         <el-header>
           <comont-heard></comont-heard>
         </el-header>
+        <comont-tag></comont-tag>
         <el-main>
           <router-view></router-view>
         </el-main>
@@ -19,18 +20,20 @@
 <script>
 import ComontAside from '@/components/ComontAside.vue'
 import ComontHeard from '@/components/ComontHeard.vue'
+import ComontTag from '@/components/ComontTag.vue'
 export default {
-  name: 'Home',
+  name: 'Main',
   components: {
     ComontAside,
-    ComontHeard
+    ComontHeard,
+    ComontTag
   }
 }
 </script>
 
 <style lang="less" scoped>
 .el-header {
-  background-color: black;
+  background-color: rgb(49, 49, 49);
 }
 .el-main {
   padding-top: 0;

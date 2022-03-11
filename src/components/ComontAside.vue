@@ -12,7 +12,7 @@
           <span slot="title">{{ item.label }}</span>
         </template>
         <el-menu-item-group v-for="subitem in item.children" :key="subitem.path">
-          <el-menu-item :index="subitem.path">{{ subitem.label }}</el-menu-item>
+          <el-menu-item @click="clickMenu(subitem)" :index="subitem.path">{{ subitem.label }}</el-menu-item>
         </el-menu-item-group>
       </el-submenu>
     </el-menu>
@@ -85,6 +85,8 @@ export default {
         return
       }
       this.$router.push('/' + item.name)
+      this.$store.commit('selectMenu', item)
+      console.log(item)
     }
   },
   computed: {
