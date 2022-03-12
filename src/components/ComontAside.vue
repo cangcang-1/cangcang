@@ -1,22 +1,20 @@
 <template>
-  <div>
-    <el-menu default-active="1-4-1" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
-      <h4>{{ isCollapse ? '后台' : '通用后台管理系统' }}</h4>
-      <el-menu-item @click="clickMenu(item)" v-for="item in noChildren" :key="item.path" :index="item.path">
+  <el-menu default-active="1-4-1" background-color="#545c64" text-color="#fff" active-text-color="#ffd04b" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" :collapse="isCollapse">
+    <h4>{{ isCollapse ? '后台' : '通用后台管理系统' }}</h4>
+    <el-menu-item @click="clickMenu(item)" v-for="item in noChildren" :key="item.path" :index="item.path">
+      <i :class="'el-icon-' + item.icon"></i>
+      <span slot="title">{{ item.label }}</span>
+    </el-menu-item>
+    <el-submenu index="item.path" v-for="item in hasChildren" :key="item.path">
+      <template slot="title">
         <i :class="'el-icon-' + item.icon"></i>
         <span slot="title">{{ item.label }}</span>
-      </el-menu-item>
-      <el-submenu index="item.path" v-for="item in hasChildren" :key="item.path">
-        <template slot="title">
-          <i :class="'el-icon-' + item.icon"></i>
-          <span slot="title">{{ item.label }}</span>
-        </template>
-        <el-menu-item-group v-for="subitem in item.children" :key="subitem.path">
-          <el-menu-item @click="clickMenu(subitem)" :index="subitem.path">{{ subitem.label }}</el-menu-item>
-        </el-menu-item-group>
-      </el-submenu>
-    </el-menu>
-  </div>
+      </template>
+      <el-menu-item-group v-for="subitem in item.children" :key="subitem.path">
+        <el-menu-item @click="clickMenu(subitem)" :index="subitem.path">{{ subitem.label }}</el-menu-item>
+      </el-menu-item-group>
+    </el-submenu>
+  </el-menu>
 </template>
 
 <script>

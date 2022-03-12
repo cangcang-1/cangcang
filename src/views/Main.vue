@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="box-container">
     <el-container style="heigh: 100%">
       <el-aside width="auto">
         <comont-aside></comont-aside>
